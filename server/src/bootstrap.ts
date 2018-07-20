@@ -1,8 +1,5 @@
-import * as debug from 'debug'
 import * as http from 'http'
 import { apolloServer, app } from './app'
-
-const debugClient = debug('server')
 
 /**
  * Get port from environment and store in Express.
@@ -78,7 +75,8 @@ function onError(error: any) {
  */
 
 function onListening() {
-  debugClient(
+  // tslint:disable-next-line:no-console
+  console.log(
     `Listening on http://localhost:${port}${apolloServer.graphqlPath}`
   )
 }

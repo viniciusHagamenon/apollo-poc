@@ -6,9 +6,9 @@ Apollo Graphql + Express POC
 
 - Express
 - Apollo Graphql
+- Docker
 - Prisma (TODO)
 - Postgres (TODO)
-- Docker (TODO)
 - Serverless (TODO)
 - Jest (TODO)
 
@@ -16,6 +16,7 @@ Apollo Graphql + Express POC
 
 - Express (TODO)
 - Next.js (TODO)
+- Docker (TODO)
 - React (TODO)
 - Styled-Component (TODO)
 - React-Intl (TODO)

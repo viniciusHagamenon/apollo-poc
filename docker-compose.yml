@@ -1,0 +1,19 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - ./.db:/opt/postgres/data
+    environment:
+      POSTGRES_DB: beer
+      POSTGRES_USER: beer
+      POSTGRES_PASSWORD: beerpwd
+  
+  server:
+    build: ./server/docker
+    volumes:
+      - ./server:/opt/apps/server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres

@@ -1,6 +1,5 @@
 {
-  "watch": ["src/**/*.ts"],
+  "watch": ["src/**/*.*"],
   "env": { "TS_NODE_COMPILER_OPTIONS": "{\"module\":\"commonjs\"}" },
-  "exec": "node -r ts-node/register --inspect src/bootstrap.ts",
-  "ext": "ts"
+  "exec": "node -r ts-node/register --inspect src/bootstrap.ts"
 }
