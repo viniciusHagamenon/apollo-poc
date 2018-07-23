@@ -1,0 +1,23 @@
+type Beer {
+  id: ID! @unique
+  name: String!
+  tagline: String!
+  first_brewed: DateTime!
+  description: String!
+  image_url: String!
+  abv: Float!
+  ibu: Float!
+  target_fg: Float!
+  target_og: Float!
+  ebc: Float!
+  srm: Float!
+  ph: Float!
+  attenuation_level: Float!
+  volume: Json!
+  boil_volume: Json!
+  method: Json!
+  ingredients: Json!
+  food_pairing: Json!
+  brewers_tips: String!
+  contributed_by: String!
+}

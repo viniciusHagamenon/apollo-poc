@@ -1,19 +1,35 @@
 import { ApolloServer } from 'apollo-server-express'
 import * as cookieParser from 'cookie-parser'
 import * as express from 'express'
+import { importSchema } from 'graphql-import'
 import * as createError from 'http-errors'
 import * as logger from 'morgan'
 import * as path from 'path'
-
-import resolvers from './data/resolvers'
-import typeDefs from './data/schema'
+import { Prisma } from 'prisma-binding'
 
 import indexRouter from './routes/index'
 import usersRouter from './routes/users'
 
-export const apolloServer = new ApolloServer({ typeDefs, resolvers })
+import { resolvers } from './data/resolvers'
+const typeDefs: any = importSchema('src/data/schema.graphql')
+
+export const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: (req: any) => ({
+    ...req,
+    prisma: new Prisma({
+      typeDefs: 'src/data/generated/prisma.graphql',
+      endpoint: 'http://prisma:4466',
+      secret: 'my-secret',
+      debug: true,
+    }),
+  }),
+})
+
 export const app = express()
 
+// Setup Apollo Server Middleware
 apolloServer.applyMiddleware({ app })
 
 app.use('/graphql', () => {

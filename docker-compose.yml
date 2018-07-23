@@ -2,18 +2,44 @@ version: '3'
 services:
   postgres:
     image: postgres
+    restart: always
     volumes:
       - ./.db:/opt/postgres/data
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_DB: beer
       POSTGRES_USER: beer
       POSTGRES_PASSWORD: beerpwd
-  
+
+  prisma:
+    image: prismagraphql/prisma:1.11
+    restart: always
+    ports:
+      - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        managementApiSecret: my-secret
+        databases:
+          beer:
+            connector: postgres
+            host: postgres
+            port: 5432
+            database: beer
+            user: beer
+            password: beerpwd
+            migrations: true
+
   server:
     build: ./server/docker
     volumes:
       - ./server:/opt/apps/server
     ports:
-      - "3000:3000"
+      - "4000:4000"
     depends_on:
       - postgres
+      - prisma
+    environment:
+      PRISMA_MANAGEMENT_API_SECRET: my-secret

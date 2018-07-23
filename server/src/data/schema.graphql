@@ -1,0 +1,6 @@
+# import Beer from './generated/prisma.graphql'
+
+type Query {
+  beers(searchString: String): [Beer!]
+  beer(id: ID!): Beer
+}

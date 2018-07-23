@@ -7,8 +7,8 @@ Apollo Graphql + Express POC
 - Express
 - Apollo Graphql
 - Docker
-- Prisma (TODO)
-- Postgres (TODO)
+- Prisma
+- Postgres
 - Serverless (TODO)
 - Jest (TODO)
 

@@ -1,8 +1,8 @@
 FROM node:8-slim
 
-# Expose port 3000
-ENV PORT=3000
-EXPOSE 3000
+# Expose port 4000
+ENV PORT=4000
+EXPOSE 4000
 
 # Copy code
 RUN mkdir -p /opt/apps/server

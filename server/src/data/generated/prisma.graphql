@@ -1,0 +1,768 @@
+# source: http://localhost:4466
+# timestamp: Mon Jul 23 2018 15:37:47 GMT-0300 (-03)
+
+type AggregateBeer {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Beer implements Node {
+  id: ID!
+  name: String!
+  tagline: String!
+  first_brewed: DateTime!
+  description: String!
+  image_url: String!
+  abv: Float!
+  ibu: Float!
+  target_fg: Float!
+  target_og: Float!
+  ebc: Float!
+  srm: Float!
+  ph: Float!
+  attenuation_level: Float!
+  volume: Json!
+  boil_volume: Json!
+  method: Json!
+  ingredients: Json!
+  food_pairing: Json!
+  brewers_tips: String!
+  contributed_by: String!
+}
+
+"""A connection to a list of items."""
+type BeerConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeerEdge]!
+  aggregate: AggregateBeer!
+}
+
+input BeerCreateInput {
+  name: String!
+  tagline: String!
+  first_brewed: DateTime!
+  description: String!
+  image_url: String!
+  abv: Float!
+  ibu: Float!
+  target_fg: Float!
+  target_og: Float!
+  ebc: Float!
+  srm: Float!
+  ph: Float!
+  attenuation_level: Float!
+  volume: Json!
+  boil_volume: Json!
+  method: Json!
+  ingredients: Json!
+  food_pairing: Json!
+  brewers_tips: String!
+  contributed_by: String!
+}
+
+"""An edge in a connection."""
+type BeerEdge {
+  """The item at the end of the edge."""
+  node: Beer!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeerOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  tagline_ASC
+  tagline_DESC
+  first_brewed_ASC
+  first_brewed_DESC
+  description_ASC
+  description_DESC
+  image_url_ASC
+  image_url_DESC
+  abv_ASC
+  abv_DESC
+  ibu_ASC
+  ibu_DESC
+  target_fg_ASC
+  target_fg_DESC
+  target_og_ASC
+  target_og_DESC
+  ebc_ASC
+  ebc_DESC
+  srm_ASC
+  srm_DESC
+  ph_ASC
+  ph_DESC
+  attenuation_level_ASC
+  attenuation_level_DESC
+  volume_ASC
+  volume_DESC
+  boil_volume_ASC
+  boil_volume_DESC
+  method_ASC
+  method_DESC
+  ingredients_ASC
+  ingredients_DESC
+  food_pairing_ASC
+  food_pairing_DESC
+  brewers_tips_ASC
+  brewers_tips_DESC
+  contributed_by_ASC
+  contributed_by_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BeerPreviousValues {
+  id: ID!
+  name: String!
+  tagline: String!
+  first_brewed: DateTime!
+  description: String!
+  image_url: String!
+  abv: Float!
+  ibu: Float!
+  target_fg: Float!
+  target_og: Float!
+  ebc: Float!
+  srm: Float!
+  ph: Float!
+  attenuation_level: Float!
+  volume: Json!
+  boil_volume: Json!
+  method: Json!
+  ingredients: Json!
+  food_pairing: Json!
+  brewers_tips: String!
+  contributed_by: String!
+}
+
+type BeerSubscriptionPayload {
+  mutation: MutationType!
+  node: Beer
+  updatedFields: [String!]
+  previousValues: BeerPreviousValues
+}
+
+input BeerSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeerWhereInput
+}
+
+input BeerUpdateInput {
+  name: String
+  tagline: String
+  first_brewed: DateTime
+  description: String
+  image_url: String
+  abv: Float
+  ibu: Float
+  target_fg: Float
+  target_og: Float
+  ebc: Float
+  srm: Float
+  ph: Float
+  attenuation_level: Float
+  volume: Json
+  boil_volume: Json
+  method: Json
+  ingredients: Json
+  food_pairing: Json
+  brewers_tips: String
+  contributed_by: String
+}
+
+input BeerWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  tagline: String
+
+  """All values that are not equal to given value."""
+  tagline_not: String
+
+  """All values that are contained in given list."""
+  tagline_in: [String!]
+
+  """All values that are not contained in given list."""
+  tagline_not_in: [String!]
+
+  """All values less than the given value."""
+  tagline_lt: String
+
+  """All values less than or equal the given value."""
+  tagline_lte: String
+
+  """All values greater than the given value."""
+  tagline_gt: String
+
+  """All values greater than or equal the given value."""
+  tagline_gte: String
+
+  """All values containing the given string."""
+  tagline_contains: String
+
+  """All values not containing the given string."""
+  tagline_not_contains: String
+
+  """All values starting with the given string."""
+  tagline_starts_with: String
+
+  """All values not starting with the given string."""
+  tagline_not_starts_with: String
+
+  """All values ending with the given string."""
+  tagline_ends_with: String
+
+  """All values not ending with the given string."""
+  tagline_not_ends_with: String
+  first_brewed: DateTime
+
+  """All values that are not equal to given value."""
+  first_brewed_not: DateTime
+
+  """All values that are contained in given list."""
+  first_brewed_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  first_brewed_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  first_brewed_lt: DateTime
+
+  """All values less than or equal the given value."""
+  first_brewed_lte: DateTime
+
+  """All values greater than the given value."""
+  first_brewed_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  first_brewed_gte: DateTime
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  image_url: String
+
+  """All values that are not equal to given value."""
+  image_url_not: String
+
+  """All values that are contained in given list."""
+  image_url_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_url_not_in: [String!]
+
+  """All values less than the given value."""
+  image_url_lt: String
+
+  """All values less than or equal the given value."""
+  image_url_lte: String
+
+  """All values greater than the given value."""
+  image_url_gt: String
+
+  """All values greater than or equal the given value."""
+  image_url_gte: String
+
+  """All values containing the given string."""
+  image_url_contains: String
+
+  """All values not containing the given string."""
+  image_url_not_contains: String
+
+  """All values starting with the given string."""
+  image_url_starts_with: String
+
+  """All values not starting with the given string."""
+  image_url_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_url_ends_with: String
+
+  """All values not ending with the given string."""
+  image_url_not_ends_with: String
+  abv: Float
+
+  """All values that are not equal to given value."""
+  abv_not: Float
+
+  """All values that are contained in given list."""
+  abv_in: [Float!]
+
+  """All values that are not contained in given list."""
+  abv_not_in: [Float!]
+
+  """All values less than the given value."""
+  abv_lt: Float
+
+  """All values less than or equal the given value."""
+  abv_lte: Float
+
+  """All values greater than the given value."""
+  abv_gt: Float
+
+  """All values greater than or equal the given value."""
+  abv_gte: Float
+  ibu: Float
+
+  """All values that are not equal to given value."""
+  ibu_not: Float
+
+  """All values that are contained in given list."""
+  ibu_in: [Float!]
+
+  """All values that are not contained in given list."""
+  ibu_not_in: [Float!]
+
+  """All values less than the given value."""
+  ibu_lt: Float
+
+  """All values less than or equal the given value."""
+  ibu_lte: Float
+
+  """All values greater than the given value."""
+  ibu_gt: Float
+
+  """All values greater than or equal the given value."""
+  ibu_gte: Float
+  target_fg: Float
+
+  """All values that are not equal to given value."""
+  target_fg_not: Float
+
+  """All values that are contained in given list."""
+  target_fg_in: [Float!]
+
+  """All values that are not contained in given list."""
+  target_fg_not_in: [Float!]
+
+  """All values less than the given value."""
+  target_fg_lt: Float
+
+  """All values less than or equal the given value."""
+  target_fg_lte: Float
+
+  """All values greater than the given value."""
+  target_fg_gt: Float
+
+  """All values greater than or equal the given value."""
+  target_fg_gte: Float
+  target_og: Float
+
+  """All values that are not equal to given value."""
+  target_og_not: Float
+
+  """All values that are contained in given list."""
+  target_og_in: [Float!]
+
+  """All values that are not contained in given list."""
+  target_og_not_in: [Float!]
+
+  """All values less than the given value."""
+  target_og_lt: Float
+
+  """All values less than or equal the given value."""
+  target_og_lte: Float
+
+  """All values greater than the given value."""
+  target_og_gt: Float
+
+  """All values greater than or equal the given value."""
+  target_og_gte: Float
+  ebc: Float
+
+  """All values that are not equal to given value."""
+  ebc_not: Float
+
+  """All values that are contained in given list."""
+  ebc_in: [Float!]
+
+  """All values that are not contained in given list."""
+  ebc_not_in: [Float!]
+
+  """All values less than the given value."""
+  ebc_lt: Float
+
+  """All values less than or equal the given value."""
+  ebc_lte: Float
+
+  """All values greater than the given value."""
+  ebc_gt: Float
+
+  """All values greater than or equal the given value."""
+  ebc_gte: Float
+  srm: Float
+
+  """All values that are not equal to given value."""
+  srm_not: Float
+
+  """All values that are contained in given list."""
+  srm_in: [Float!]
+
+  """All values that are not contained in given list."""
+  srm_not_in: [Float!]
+
+  """All values less than the given value."""
+  srm_lt: Float
+
+  """All values less than or equal the given value."""
+  srm_lte: Float
+
+  """All values greater than the given value."""
+  srm_gt: Float
+
+  """All values greater than or equal the given value."""
+  srm_gte: Float
+  ph: Float
+
+  """All values that are not equal to given value."""
+  ph_not: Float
+
+  """All values that are contained in given list."""
+  ph_in: [Float!]
+
+  """All values that are not contained in given list."""
+  ph_not_in: [Float!]
+
+  """All values less than the given value."""
+  ph_lt: Float
+
+  """All values less than or equal the given value."""
+  ph_lte: Float
+
+  """All values greater than the given value."""
+  ph_gt: Float
+
+  """All values greater than or equal the given value."""
+  ph_gte: Float
+  attenuation_level: Float
+
+  """All values that are not equal to given value."""
+  attenuation_level_not: Float
+
+  """All values that are contained in given list."""
+  attenuation_level_in: [Float!]
+
+  """All values that are not contained in given list."""
+  attenuation_level_not_in: [Float!]
+
+  """All values less than the given value."""
+  attenuation_level_lt: Float
+
+  """All values less than or equal the given value."""
+  attenuation_level_lte: Float
+
+  """All values greater than the given value."""
+  attenuation_level_gt: Float
+
+  """All values greater than or equal the given value."""
+  attenuation_level_gte: Float
+  brewers_tips: String
+
+  """All values that are not equal to given value."""
+  brewers_tips_not: String
+
+  """All values that are contained in given list."""
+  brewers_tips_in: [String!]
+
+  """All values that are not contained in given list."""
+  brewers_tips_not_in: [String!]
+
+  """All values less than the given value."""
+  brewers_tips_lt: String
+
+  """All values less than or equal the given value."""
+  brewers_tips_lte: String
+
+  """All values greater than the given value."""
+  brewers_tips_gt: String
+
+  """All values greater than or equal the given value."""
+  brewers_tips_gte: String
+
+  """All values containing the given string."""
+  brewers_tips_contains: String
+
+  """All values not containing the given string."""
+  brewers_tips_not_contains: String
+
+  """All values starting with the given string."""
+  brewers_tips_starts_with: String
+
+  """All values not starting with the given string."""
+  brewers_tips_not_starts_with: String
+
+  """All values ending with the given string."""
+  brewers_tips_ends_with: String
+
+  """All values not ending with the given string."""
+  brewers_tips_not_ends_with: String
+  contributed_by: String
+
+  """All values that are not equal to given value."""
+  contributed_by_not: String
+
+  """All values that are contained in given list."""
+  contributed_by_in: [String!]
+
+  """All values that are not contained in given list."""
+  contributed_by_not_in: [String!]
+
+  """All values less than the given value."""
+  contributed_by_lt: String
+
+  """All values less than or equal the given value."""
+  contributed_by_lte: String
+
+  """All values greater than the given value."""
+  contributed_by_gt: String
+
+  """All values greater than or equal the given value."""
+  contributed_by_gte: String
+
+  """All values containing the given string."""
+  contributed_by_contains: String
+
+  """All values not containing the given string."""
+  contributed_by_not_contains: String
+
+  """All values starting with the given string."""
+  contributed_by_starts_with: String
+
+  """All values not starting with the given string."""
+  contributed_by_not_starts_with: String
+
+  """All values ending with the given string."""
+  contributed_by_ends_with: String
+
+  """All values not ending with the given string."""
+  contributed_by_not_ends_with: String
+}
+
+input BeerWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+"""Raw JSON value"""
+scalar Json
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createBeer(data: BeerCreateInput!): Beer!
+  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
+  deleteBeer(where: BeerWhereUniqueInput!): Beer
+  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
+  updateManyBeers(data: BeerUpdateInput!, where: BeerWhereInput): BatchPayload!
+  deleteManyBeers(where: BeerWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
+  beer(where: BeerWhereUniqueInput!): Beer
+  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
+}
