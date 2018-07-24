@@ -9,8 +9,8 @@ Apollo Graphql + Express POC using information from [https://punkapi.com/documen
 - Prisma
 - Postgres
 - Docker
+- Jest
 - Serverless (TODO - only for production)
-- Jest (TODO)
 
 ## Client (TODO)
 

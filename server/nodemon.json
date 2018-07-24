@@ -1,5 +1,6 @@
 {
   "watch": ["src/**/*.*"],
+  "ignore": ["*.spec.ts"],
   "env": { "TS_NODE_COMPILER_OPTIONS": "{\"module\":\"commonjs\"}" },
   "exec": "node -r ts-node/register --inspect src/bootstrap.ts"
 }
