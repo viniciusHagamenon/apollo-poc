@@ -4,7 +4,7 @@ FROM node:8-slim
 ENV PORT=4000
 EXPOSE 4000
 
-# Copy code
+# Set worker dir
 RUN mkdir -p /opt/apps/server
 WORKDIR /opt/apps/server
 

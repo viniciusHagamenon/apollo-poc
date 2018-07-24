@@ -20,8 +20,8 @@ export const apolloServer = new ApolloServer({
     ...req,
     prisma: new Prisma({
       typeDefs: 'src/data/generated/prisma.graphql',
-      endpoint: 'http://prisma:4466',
-      secret: 'my-secret',
+      endpoint: process.env.PRISMA_ENDPOINT,
+      secret: process.env.PRISMA_MANAGEMENT_API_SECRET,
       debug: true,
     }),
   }),

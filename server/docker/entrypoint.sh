@@ -4,11 +4,11 @@ set -e
 yarn config set unsafe-perm true
 yarn install
 
-until curl -f "http://prisma:4466"; do
+until curl -f ${PRISMA_ENDPOINT}; do
   >&2 echo "Prisma is unavailable - sleeping"
   sleep 1
 done
 
-yarn prisma deploy
+yarn prisma deploy -i
 
 exec "$@"

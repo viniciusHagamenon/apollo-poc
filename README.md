@@ -24,3 +24,8 @@ Apollo Graphql + Express POC
 - Serverless (TODO)
 - Jest (TODO)
 - Enzyme (TODO)
+
+## Setup
+
+- Rename `.env.example` to `.env` and set the correct environment variables.
+- Run `docker-compose up -d`
