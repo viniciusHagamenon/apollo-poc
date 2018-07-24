@@ -24,5 +24,15 @@ export const resolvers = {
         info
       )
     },
+    beerByPunkID: (_: any, args: any, context: any, info: any) => {
+      return context.prisma.query.beer(
+        {
+          where: {
+            punk_id: args.punk_id,
+          },
+        },
+        info
+      )
+    },
   },
 }

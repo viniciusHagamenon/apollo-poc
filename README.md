@@ -1,6 +1,6 @@
 # apollo-poc
 
-Apollo Graphql + Express POC
+Apollo Graphql + Express POC using information from [https://punkapi.com/documentation/v2](https://punkapi.com/documentation/v2).
 
 ## Server
 

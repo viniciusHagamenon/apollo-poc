@@ -1,5 +1,5 @@
-# source: http://localhost:4466
-# timestamp: Mon Jul 23 2018 15:37:47 GMT-0300 (-03)
+# source: http://prisma:4466
+# timestamp: Tue Jul 24 2018 18:07:59 GMT+0000 (UTC)
 
 type AggregateBeer {
   count: Int!
@@ -12,19 +12,20 @@ type BatchPayload {
 
 type Beer implements Node {
   id: ID!
+  punk_id: Int!
   name: String!
   tagline: String!
   first_brewed: DateTime!
   description: String!
   image_url: String!
-  abv: Float!
-  ibu: Float!
-  target_fg: Float!
-  target_og: Float!
-  ebc: Float!
-  srm: Float!
-  ph: Float!
-  attenuation_level: Float!
+  abv: Float
+  ibu: Float
+  target_fg: Float
+  target_og: Float
+  ebc: Float
+  srm: Float
+  ph: Float
+  attenuation_level: Float
   volume: Json!
   boil_volume: Json!
   method: Json!
@@ -45,19 +46,20 @@ type BeerConnection {
 }
 
 input BeerCreateInput {
+  punk_id: Int!
   name: String!
   tagline: String!
   first_brewed: DateTime!
   description: String!
   image_url: String!
-  abv: Float!
-  ibu: Float!
-  target_fg: Float!
-  target_og: Float!
-  ebc: Float!
-  srm: Float!
-  ph: Float!
-  attenuation_level: Float!
+  abv: Float
+  ibu: Float
+  target_fg: Float
+  target_og: Float
+  ebc: Float
+  srm: Float
+  ph: Float
+  attenuation_level: Float
   volume: Json!
   boil_volume: Json!
   method: Json!
@@ -79,6 +81,8 @@ type BeerEdge {
 enum BeerOrderByInput {
   id_ASC
   id_DESC
+  punk_id_ASC
+  punk_id_DESC
   name_ASC
   name_DESC
   tagline_ASC
@@ -127,19 +131,20 @@ enum BeerOrderByInput {
 
 type BeerPreviousValues {
   id: ID!
+  punk_id: Int!
   name: String!
   tagline: String!
   first_brewed: DateTime!
   description: String!
   image_url: String!
-  abv: Float!
-  ibu: Float!
-  target_fg: Float!
-  target_og: Float!
-  ebc: Float!
-  srm: Float!
-  ph: Float!
-  attenuation_level: Float!
+  abv: Float
+  ibu: Float
+  target_fg: Float
+  target_og: Float
+  ebc: Float
+  srm: Float
+  ph: Float
+  attenuation_level: Float
   volume: Json!
   boil_volume: Json!
   method: Json!
@@ -189,6 +194,7 @@ input BeerSubscriptionWhereInput {
 }
 
 input BeerUpdateInput {
+  punk_id: Int
   name: String
   tagline: String
   first_brewed: DateTime
@@ -260,6 +266,28 @@ input BeerWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  punk_id: Int
+
+  """All values that are not equal to given value."""
+  punk_id_not: Int
+
+  """All values that are contained in given list."""
+  punk_id_in: [Int!]
+
+  """All values that are not contained in given list."""
+  punk_id_not_in: [Int!]
+
+  """All values less than the given value."""
+  punk_id_lt: Int
+
+  """All values less than or equal the given value."""
+  punk_id_lte: Int
+
+  """All values greater than the given value."""
+  punk_id_gt: Int
+
+  """All values greater than or equal the given value."""
+  punk_id_gte: Int
   name: String
 
   """All values that are not equal to given value."""
@@ -702,6 +730,7 @@ input BeerWhereInput {
 
 input BeerWhereUniqueInput {
   id: ID
+  punk_id: Int
 }
 
 scalar DateTime

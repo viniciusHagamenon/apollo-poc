@@ -1,18 +1,19 @@
 type Beer {
   id: ID! @unique
+  punk_id: Int! @unique
   name: String!
   tagline: String!
   first_brewed: DateTime!
   description: String!
   image_url: String!
-  abv: Float!
-  ibu: Float!
-  target_fg: Float!
-  target_og: Float!
-  ebc: Float!
-  srm: Float!
-  ph: Float!
-  attenuation_level: Float!
+  abv: Float
+  ibu: Float
+  target_fg: Float
+  target_og: Float
+  ebc: Float
+  srm: Float
+  ph: Float
+  attenuation_level: Float
   volume: Json!
   boil_volume: Json!
   method: Json!

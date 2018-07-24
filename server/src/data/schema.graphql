@@ -3,4 +3,5 @@
 type Query {
   beers(searchString: String): [Beer!]
   beer(id: ID!): Beer
+  beerByPunkID(punk_id: Int!): Beer
 }
