@@ -4,12 +4,12 @@ Apollo Graphql + Express POC using information from [https://punkapi.com/documen
 
 ## Server
 
-- Express
+- Express (Can be removed if only using GraphQL)
 - Apollo Graphql
-- Docker
 - Prisma
 - Postgres
-- Serverless (TODO)
+- Docker
+- Serverless (TODO - only for production)
 - Jest (TODO)
 
 ## Client (TODO)
@@ -29,3 +29,17 @@ Apollo Graphql + Express POC using information from [https://punkapi.com/documen
 
 - Rename `.env.example` to `.env` and set the correct environment variables.
 - Run `docker-compose up -d`
+
+## Fetch Data from Punk API
+
+Access bash inside the server container:
+
+```
+docker exec -it apollo-poc_server_1 /bin/bash
+```
+
+Run the script:
+
+```
+yarn ts-node scripts/fetch-data.ts
+```
